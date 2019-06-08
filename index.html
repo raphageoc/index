@@ -18,6 +18,11 @@
 
   <!-- Display user profile data -->
   <div id="userData"></div>
+  
+  <fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
 
 
   <script>
@@ -88,6 +93,12 @@
         document.getElementById('status').innerHTML = 'You have successfully logout from Facebook.';
       });
     }
+    
+    function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
   </script>
 </body>
 
